@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .App-logo {
@@ -35,4 +40,194 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.message {
+  max-width: 60%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  color: white;
+  font-size: 16px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.message.sent {
+  background-color: #0b93f6;
+  align-self: flex-end;
+}
+
+.message.received {
+
+  background-color: #e5e5ea;
+  color: black;
+  align-self: flex-start;
+}
+
+.message-text {
+  margin: 0;
+  padding: 0;
+}
+
+.message-sender {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: right;
+}
+
+/* Add additional styles to your chat room container if necessary */
+.chat-room {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+
+
+.chat-container {
+  background-color: whitesmoke;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.chat-header {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  
+}
+
+.message-container {
+  margin-bottom: 20px;
+  height: 400px; /* Adjust as needed */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.message-form {
+  display: flex;
+  gap: 10px;
+}
+
+.message-input {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.send-button {
+  padding: 10px 20px;
+  background-color: #0b93f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+.send-button:hover {
+  background-color: #0a82d1;
+}
+
+.dp{
+  max-width: 1rem;
+  max-height: 1rem; 
+}
+
+
+/* Sign Out Button */
+.sign-out-button {
+  padding: 10px 20px;
+  background-color: #f44336; /* Red color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px; /* Space between buttons */
+}
+
+.sign-out-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Clear Chat Button */
+.clear-chat-button {
+  padding: 10px 20px;
+  background-color: #4caf50; /* Green color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.clear-chat-button:hover {
+  background-color: #388e3c; /* Darker green on hover */
+}
+
+
+
+/* SignIn Page Container */
+.sign-in-header{
+  padding-top: 10rem;
+  text-align: center;
+  font-size: 28px;
+  /* margin-bottom: 30px; */
+  color: #333;
+}
+.chat-header{
+  text-align: center;
+  font-size: 28px;
+  /* margin-bottom: 30px; */
+  color: #333;
+}
+.sign-in-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh; 
+}
+
+.google-sign-in-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #5f6368;
+  border: 1px solid #d6d6d6;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: box-shadow 0.3s, border-color 0.3s;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.google-sign-in-button:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.24), 0 0 6px rgba(0,0,0,0.12);
+  border-color: transparent;
+}
+
+.google-icon {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
 }
