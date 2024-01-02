@@ -8,9 +8,25 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { initializeApp } from "firebase/app";
 import { addDoc, getFirestore, serverTimestamp } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { deleteDoc, query, writeBatch,collection, getDocs } from "firebase/firestore";
+import {
+  deleteDoc,
+  query,
+  writeBatch,
+  collection,
+  getDocs,
+  orderBy,
+  onSnapshot,
+} from "firebase/firestore";
 import { doc } from "firebase/firestore";
 import Request from "./Api";
+import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Article from "./Article/Article";
+import ReactMarkdown from "react-markdown";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import HomePage from "./Article/Article";
+
 const firebaseConfig = {
   apiKey: "AIzaSyDmgATt0P0R2yz82w7u6b2jVk3sUG-ySnQ",
   authDomain: "mental-health-bot-db.firebaseapp.com",
@@ -36,13 +52,54 @@ const conversationId = createBotConversationId(userId);
 async function getResponse(query) {
   return Request(query)
     .then((res) => {
-      // console.log(res.response);
       return res.response;
     })
     .catch((err) => {
       console.error(err);
       throw err; // Rethrow the error for further handling if needed
     });
+}
+
+function Navbar() {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+        console.error("Sign out error", error);
+      });
+  };
+
+  return (
+    <nav className="navbar">
+      <ul className="nav-links">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/personal-chat">Personal Chatbot</Link>
+        </li>
+        <li>
+          <Link to="/public-chat">Public Chatbot</Link>
+        </li>
+        {user && (
+          <li>
+            <button onClick={handleSignOut} className="nav-sign-out-button">
+              <Link to="/" className="sign-out">
+                Sign Out
+              </Link>
+            </button>
+          </li>
+        )}
+      </ul>
+    </nav>
+  );
 }
 
 function App() {
@@ -58,11 +115,18 @@ function App() {
     return <div>Loading...</div>;
   }
 
-  // Show ChatRoom if user is signed in, otherwise show SignIn
   return (
-    <div className="App">
-      <section>{user ? <ChatRoom /> : <SignIn />}</section>
-    </div>
+    <Router>
+      <div className="App">
+        {user && <Navbar />}
+        <Routes>
+          <Route path="/" element={user ? <Blog /> : <SignIn />} />
+          <Route path="/personal-chat" element={<ChatRoom />} />
+          <Route path="/public-chat" element={<PublicChat />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
@@ -105,6 +169,79 @@ function SignIn() {
     </>
   );
 }
+function Blog() {
+  return (
+    <HomePage/>
+  );
+}
+function PublicChat() {
+  const [messages, setMessages] = useState([]);
+  const [formValue, setFormValue] = useState("");
+  const bottomOfChat = useRef(null);
+
+  useEffect(() => {
+    // Reference to the public messages collection
+    const messagesRef = collection(firestore, "messages");
+    const q = query(messagesRef, orderBy("createdAt"));
+
+    // Listen for new messages
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      setMessages(
+        querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+      );
+    });
+
+    return () => unsubscribe(); // Detach listener on unmount
+  }, []);
+
+  useEffect(() => {
+    // Scroll to the bottom of the chat on new messages
+    bottomOfChat.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    if (!auth.currentUser || !formValue.trim()) return;
+
+    const { uid, displayName } = auth.currentUser;
+    const messagesRef = collection(firestore, "messages");
+
+    await addDoc(messagesRef, {
+      text: formValue,
+      createdAt: serverTimestamp(),
+      uid,
+      displayName: displayName || "Anonymous",
+    });
+
+    setFormValue("");
+  };
+
+  return (
+    auth.currentUser && (
+      <div className="chat-container public-chat">
+        <div className="message-container">
+          {messages.map((msg) => (
+            <ChatMessage key={msg.id} message={msg} />
+          ))}
+          <div ref={bottomOfChat} />
+        </div>
+        <form onSubmit={sendMessage} className="message-form">
+          <input
+            className="message-input"
+            type="text"
+            value={formValue}
+            placeholder="Type a message..."
+            onChange={(e) => setFormValue(e.target.value)}
+          />
+          <button type="submit" className="send-button">
+            Send
+          </button>
+        </form>
+      </div>
+    )
+  );
+}
+
 function ChatRoom() {
   const [messages, setMessages] = useState([]);
   const messageRef = collection(firestore, "messages");
@@ -217,10 +354,10 @@ function ChatRoom() {
 
   return (
     <>
-      <header className="chat-header">This is the chat room</header>
-      <button onClick={SignOut} className="sign-out-button">
+      {/* <Navbar/> */}
+      {/* <button onClick={SignOut} className="sign-out-button">
         Sign Out
-      </button>
+      </button> */}
       <button className="clear-chat-button" onClick={Clear}>
         Clear Chat
       </button>

@@ -1,5 +1,5 @@
 import axios, * as others from "axios";
-const url = "http://localhost:5000/";
+const url = "http://localhost:15527/";
 
 const Request = async (query) => {
   const option = {
@@ -17,12 +17,12 @@ const Request = async (query) => {
   return axios
     .request(option)
     .then((res) => {
+      console.log(res);
       return res.data; // The response data
     })
     .catch((err) => {
       console.error(err);
     });
 };
-// getResponse("hello
 
 export default Request;

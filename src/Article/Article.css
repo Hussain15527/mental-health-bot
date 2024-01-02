@@ -1,0 +1,25 @@
+.post{
+    max-width: 60rem;
+    text-align: center;
+    font-size: 30px;
+    margin: auto;
+}
+
+
+.home-page{
+    margin: auto;
+   max-width: 80rem; 
+  }
+
+
+  
+  .home-page h1 {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 4rem;
+    color: #333;
+  }
+  
+  /* Additional styling can be added here */
+  
