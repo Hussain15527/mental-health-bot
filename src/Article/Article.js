@@ -3,7 +3,12 @@ import ReactMarkdown from "react-markdown";
 import "./Article.css";
 import "./ArticleCard.css"; // Assuming you have a CSS file for styling
 import { Link } from "react-router-dom";
-import { articles, healingMentalHealthArticles } from "../Article/ArticleData";
+import {
+  articles,
+  gamesForMentalHealth,
+  healingMentalHealthArticles,
+  novelsForMentalWellness,
+} from "../Article/ArticleData";
 const Article = (index) => {
   const [content, setContent] = useState("");
 
@@ -40,7 +45,25 @@ const HomePage = () => {
   return (
     <div>
       <div className="home-page">
-        <h1>how to help depression</h1>
+        <h1
+          style={{
+            marginTop: "60px",
+            fontSize: "2.5rem", // Larger font size
+            fontWeight: "600", // Semi-bold font weight
+            textAlign: "center", // Center align text
+            lineHeight: "1.4", // Improved line height for readability
+            padding: "20px", // Add padding
+            // maxWidth: "800px", // Max width to control line length
+            marginLeft: "auto", // Centering the text block
+            marginRight: "auto",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)", // Subtle text shadow
+            fontFamily: '"Arial", sans-serif', // Font family (can be customized)
+            letterSpacing: "1px", // Spacing between letters
+          }}
+        >
+          Exploring the Causes of Depression and Anxiety: Insights and
+          Perspectives
+        </h1>
 
         {articles.map((article, index) => (
           <ArticleCard
@@ -53,13 +76,38 @@ const HomePage = () => {
         ))}
         <h1
           style={{
-            marginTop: 60,
+            marginTop: "60px",
+            fontSize: "2.5rem", // Larger font size
+            fontWeight: "600", // Semi-bold font weight
+            textAlign: "center", // Center align text
+            lineHeight: "1.4", // Improved line height for readability
+            padding: "20px", // Add padding
+            // maxWidth: "800px", // Max width to control line length
+            marginLeft: "auto", // Centering the text block
+            marginRight: "auto",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)", // Subtle text shadow
+            fontFamily: '"Arial", sans-serif', // Font family (can be customized)
+            letterSpacing: "1px", // Spacing between letters
           }}
         >
           Valuable insights and advice for individuals looking to heal and
           manage their mental health issues
         </h1>
+
         {healingMentalHealthArticles.map((article, index) => {
+          return (
+            <ArticleCard
+              key={index}
+              index={index}
+              title={article.title}
+              description={article.description}
+              link={article.link}
+            />
+          );
+        })}
+
+        <h1>games</h1>
+        {novelsForMentalWellness.map((article, index) => {
           return (
             <ArticleCard
               key={index}

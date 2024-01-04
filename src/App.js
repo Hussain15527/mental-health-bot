@@ -90,7 +90,7 @@ function Navbar() {
         </li>
         {user && (
           <li>
-            <button onClick={handleSignOut} className="nav-sign-out-button">
+            <button onClick={handleSignOut} className="sign-out-button">
               <Link to="/" className="sign-out">
                 Sign Out
               </Link>
@@ -170,9 +170,7 @@ function SignIn() {
   );
 }
 function Blog() {
-  return (
-    <HomePage/>
-  );
+  return <HomePage />;
 }
 function PublicChat() {
   const [messages, setMessages] = useState([]);

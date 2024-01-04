@@ -6,12 +6,6 @@ export const articles = [
     link: "https://www.health.harvard.edu/mind-and-mood/what-causes-depression",
   },
   {
-    title: "The Science of Depression by The Atlantic",
-    description:
-      "An insightful exploration into the biological and neurological aspects of depression.",
-    link: "https://www.theatlantic.com/health/archive/2015/07/the-science-of-depression/397297/",
-  },
-  {
     title: "Cognitive Behavioral Therapy by Psychology Today",
     description:
       "Explains how cognitive-behavioral therapy (CBT) works and its effectiveness in treating depression.",
@@ -122,5 +116,45 @@ export const healingMentalHealthArticles = [
     description:
       "Discusses ways to maintain a healthy work-life balance and manage mental health in a work environment.",
     link: "https://www.mentalhealth.org.uk/publications/how-support-mental-health-work",
+  },
+];
+
+export const novelsForMentalWellness = [
+  {
+    title: "The Alchemist by Paulo Coelho",
+    description:
+      "A tale of self-discovery and pursuing one's dreams, offering inspiration and wisdom.",
+    link: "https://www.goodreads.com/en/book/show/18144590",
+  },
+  {
+    title: "Eleanor Oliphant Is Completely Fine by Gail Honeyman",
+    description:
+      "A heartwarming story about the importance of human connection and breaking out of isolation.",
+    link: "https://www.goodreads.com/en/book/show/35900387",
+  },
+  {
+    title: "The Rosie Project by Graeme Simsion",
+    description:
+      "A charming and humorous novel about love, life, and the challenges of social interactions.",
+    link: "https://www.goodreads.com/book/show/16181775-the-rosie-project",
+  },
+  {
+    title: "A Man Called Ove by Fredrik Backman",
+    description:
+      "An uplifting tale of unexpected friendship, love, and the ability to change.",
+    link: "https://www.goodreads.com/book/show/18774964-a-man-called-ove",
+  },
+  {
+    title: "The Little Prince by Antoine de Saint-Exupéry",
+    description:
+      "A timeless story that explores life's simple pleasures and universal truths.",
+    link: "https://www.goodreads.com/book/show/157993.The_Little_Prince",
+  },
+
+  {
+    title: "The Night Circus by Erin Morgenstern",
+    description:
+      "A magical and imaginative story set in a mysterious circus, offering an escape to a whimsical world.",
+    link: "https://www.goodreads.com/book/show/9361589-the-night-circus",
   },
 ];

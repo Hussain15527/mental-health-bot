@@ -71,12 +71,24 @@
 }
 
 .message-sender {
+
   margin-top: 4px;
   font-size: 16px;
-  color: rgba(0, 0, 0, 0.6);
+  /* color: rgba(0, 0, 0, 0.6); */
+  color: whitesmoke;
   text-align: right;
 }
-
+.message-container {
+  margin-bottom: 20px;
+  height: 75vh; 
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
 /* Add additional styles to your chat room container if necessary */
 .chat-room {
   display: flex;
@@ -98,6 +110,8 @@
   }
 }
 
+
+
 .chat-header {
   text-align: center;
   font-size: 24px;
@@ -105,17 +119,7 @@
   
 }
 
-.message-container {
-  margin-bottom: 20px;
-  height: 75vh; 
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-}
+
 
 .message-form {
   display: flex;
@@ -235,9 +239,11 @@
 
 /* Navbar Styles */
 .navbar {
-  background-color: #333;
-  padding: 1px 10px;
+  background-color: whitesmoke; /* Light background for a clean look */
+  padding: 5px 20px; /* Slightly more padding for a spacious feel */
   margin-bottom: 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-bottom: 1px solid #ddd; /* A subtle border to define the navbar */
 }
 
 .nav-links {
@@ -245,29 +251,43 @@
   padding: 0;
   display: flex;
   justify-content: center;
+  align-items: center; /* Align items for a better vertical alignment */
 }
 
 .nav-links li {
-  margin: 0 10px;
+  margin: 0 15px; /* Increase spacing between links */
 }
 
 .nav-links a {
-  color: white;
+  color: #333; /* Darker color for better readability */
   text-decoration: none;
-  font-size: 16px;
-  transition: color 0.3s;
+  font-size: 18px; /* Slightly larger font size for readability */
+  font-weight: 500; /* Medium font weight */
+  transition: color 0.3s, transform 0.3s; /* Added transform to transition */
 }
 
 .nav-links a:hover {
-  color: #ddd;
+  color: #0b93f6; /* A pleasant hover color */
+  transform: translateY(-2px); /* Slight lift effect on hover */
 }
-.nav-links .sign-out{
+.sign-out-button {
+  text-decoration: none;
   color: black;
-  padding-bottom: 1rem;
+  background-color: transparent; /* Transparent background */
+  /* border: 1px solid #333; Matching border color */
+  padding: 8px 16px; /* Padding for the button */
+  /* border-radius: 4px; Rounded corners for the button */
+  font-weight: 500; /* Consistent font weight with the links */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
 }
 
+.sign-out-button:hover {
+  background-color: #0b93f6; /* Hover background color */
+  color: white; /* Text color on hover */
+  border-color: #0b93f6; /* Border color on hover */
+}
 .public-chat{
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 
