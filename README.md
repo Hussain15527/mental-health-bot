@@ -21,6 +21,9 @@ Ensure you have npm installed:
 npm install npm@latest -g
 ```
 
+Ensure the backend is already running and the correct port is sending the
+request, find the link of the backend at the end of this file
+
 ### Installation
 
 1. Clone the repository:

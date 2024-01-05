@@ -106,7 +106,20 @@ const HomePage = () => {
           );
         })}
 
-        <h1>games</h1>
+        <h1 style={{
+            marginTop: "60px",
+            fontSize: "2.5rem", // Larger font size
+            fontWeight: "600", // Semi-bold font weight
+            textAlign: "center", // Center align text
+            lineHeight: "1.4", // Improved line height for readability
+            padding: "20px", // Add padding
+            // maxWidth: "800px", // Max width to control line length
+            marginLeft: "auto", // Centering the text block
+            marginRight: "auto",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)", // Subtle text shadow
+            fontFamily: '"Arial", sans-serif', // Font family (can be customized)
+            letterSpacing: "1px", // Spacing between letters
+          }}>Self Help Book</h1>
         {novelsForMentalWellness.map((article, index) => {
           return (
             <ArticleCard
